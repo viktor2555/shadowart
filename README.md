@@ -27,9 +27,6 @@
 </head>
 <body>
 
-    <h1>shadowart</h1>
-    <p>Portfólio de projetos</p>
-
     <!-- Bloco do Vídeo -->
     <div style="margin-top: 3rem;">
         <video controls>
