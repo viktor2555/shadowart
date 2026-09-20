@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowArt | Dark Portfolio</title>
+    <!-- Importando uma fonte com toque clássico/gótico do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #070709;
+            --card-bg: #111116;
+            --border-color: #21212b;
+            --accent-glow: rgba(138, 43, 226, 0.15); /* Brilho roxo suave */
+            --text-main: #e2e2e9;
+            --text-muted: #8b8b9e;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            /* Fundo com um gradiente sutil e sofisticado simulando vinheta escura */
+            background-image: radial-gradient(circle at 50% 0%, #151520 0%, var(--bg-dark) 70%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 5rem 1rem 3rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(to bottom, #000000, transparent);
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            letter-spacing: 6px;
+            margin: 0;
+            color: #ffffff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1100px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        /* Grade responsiva para organizar as mídias */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .media-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .media-card:hover {
+            transform: translateY(-6px);
+            border-color: #3b3b4f;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+        }
+
+        .media-wrapper {
+            width: 100%;
+            background-color: #000;
+            line-height: 0;
+        }
+
+        .media-wrapper video, 
+        .media-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 450px;
+            object-fit: cover;
+        }
+
+        .media-info {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .media-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            color: #fff;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 1px;
+        }
+
+        .media-description {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            background-color: #050507;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ShadowArt</h1>
+        <p>Dark Digital Gallery & Design</p>
+    </header>
+
+    <main>
+        <div class="gallery-grid">
+            
+            <!-- Item 1: Vídeo de Teste -->
+            <div class="media-card">
+                <div class="media-wrapper">
+                    <video controls>
+                        <source src="https://github.com/user-attachments/assets/f5880915-aeb8-43a1-91a4-64f1a8658a09" type="video/mp4">
+                        Seu navegador não suporta a exibição de vídeos.
+                    </video>
+                </div>
+                <div class="media-info">
+                    <h2 class="media-title">Conceito Sombrio</h2>
+                    <p class="media-description">Vídeo de teste explorando atmosfera, iluminação dramática e texturas góticas.</p>
+                </div>
+            </div>
+
+            <!-- Item 2: Exemplo de espaço para outra arte/vídeo -->
+            <div class="media-card">
+                <div class="media-wrapper">
+                    <!-- Para colocar uma imagem no lugar do vídeo no futuro, basta usar <img src="URL_DA_IMAGEM" alt="Título"> -->
+                    <video controls>
+                        <source src="https://github.com/user-attachments/assets/f5880915-aeb8-43a1-91a4-64f1a8658a09" type="video/mp4">
+                        Seu navegador não suporta a exibição de vídeos.
+                    </video>
+                </div>
+                <div class="media-info">
+                    <h2 class="media-title">Estudo de Texturas</h2>
+                    <p class="media-description">Exploração visual focada em elementos escuros e estéticas alternativas.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SHADOWART. TODOS OS DIREITOS RESERVADOS.</p>
+    </footer>
+
+</body>
+</html>
