@@ -3,180 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShadowArt | Dark Portfolio</title>
-    <!-- Importando uma fonte com toque clássico/gótico do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>Shadow Art | Portfólio de Victor Sanches</title>
+    <!-- Google Fonts para uma tipografia gótica/moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #070709;
-            --card-bg: #111116;
-            --border-color: #21212b;
-            --accent-glow: rgba(138, 43, 226, 0.15); /* Brilho roxo suave */
-            --text-main: #e2e2e9;
-            --text-muted: #8b8b9e;
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --accent-color: #8b0000; /* Vermelho sangue/gótico */
+            --accent-hover: #b22222;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --border-color: #262626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-dark);
-            /* Fundo com um gradiente sutil e sofisticado simulando vinheta escura */
-            background-image: radial-gradient(circle at 50% 0%, #151520 0%, var(--bg-dark) 70%);
+            background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
             text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
+            padding: 80px 20px 40px 20px;
+            background: linear-gradient(to bottom, #1a0000 0%, var(--bg-color) 100%);
             border-bottom: 1px solid var(--border-color);
-            background: linear-gradient(to bottom, #000000, transparent);
         }
 
         header h1 {
             font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            letter-spacing: 6px;
-            margin: 0;
+            font-size: 3.5rem;
+            letter-spacing: 3px;
             color: #ffffff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+            margin-bottom: 10px;
         }
 
         header p {
-            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
             color: var(--text-muted);
-            font-size: 1rem;
-            margin-top: 0.8rem;
-            letter-spacing: 2px;
+            font-weight: 300;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        main {
-            flex: 1;
-            max-width: 1100px;
-            width: 90%;
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 4rem 0;
+            padding: 40px 20px;
         }
 
-        /* Grade responsiva para organizar as mídias */
+        .bio-section {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            text-align: center;
+            background: var(--card-bg);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .bio-section h2 {
+            font-family: 'Cinzel', serif;
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .bio-section p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
 
-        .media-card {
+        .gallery-item {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
         }
 
-        .media-card:hover {
-            transform: translateY(-6px);
-            border-color: #3b3b4f;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
+            border-color: var(--accent-color);
         }
 
-        .media-wrapper {
+        .gallery-item img {
             width: 100%;
-            background-color: #000;
-            line-height: 0;
-        }
-
-        .media-wrapper video, 
-        .media-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: 450px;
+            height: 400px;
             object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
         }
 
-        .media-info {
-            padding: 1.5rem;
-            text-align: left;
+        .gallery-item:hover img {
+            transform: scale(1.03);
         }
 
-        .media-title {
+        .item-info {
+            padding: 15px 20px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .item-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: #fff;
-            margin: 0 0 0.5rem 0;
-            letter-spacing: 1px;
         }
 
-        .media-description {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            margin: 0;
-            line-height: 1.6;
+        /* Modal para Zoom da Imagem */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         footer {
             text-align: center;
-            padding: 2.5rem;
+            padding: 40px 20px;
+            background-color: #050505;
             border-top: 1px solid var(--border-color);
             color: var(--text-muted);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            background-color: #050507;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>ShadowArt</h1>
-        <p>Dark Digital Gallery & Design</p>
+        <h1>Shadow Art</h1>
+        <p>Portfólio de Arte Sombria & Dark Design — Victor Sanches</p>
     </header>
 
-    <main>
+    <div class="container">
+        
+        <section class="bio-section">
+            <h2>Sobre a Obra</h2>
+            <p>Explorando as fronteiras do horror visual, estética gótica, cyber-sigilism e ilustrações de impacto profundo. Cada peça é concebida com atmosferas densas, texturas complexas e simbolismo sombrio.</p>
+        </section>
+
         <div class="gallery-grid">
-            
-            <!-- Item 1: Vídeo de Teste -->
-            <div class="media-card">
-                <div class="media-wrapper">
-                    <video controls>
-                        <source src="https://github.com/user-attachments/assets/f5880915-aeb8-43a1-91a4-64f1a8658a09" type="video/mp4">
-                        Seu navegador não suporta a exibição de vídeos.
-                    </video>
-                </div>
-                <div class="media-info">
-                    <h2 class="media-title">Conceito Sombrio</h2>
-                    <p class="media-description">Vídeo de teste explorando atmosfera, iluminação dramática e texturas góticas.</p>
+            <!-- Item 1 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-final-art.webp', 'Ritual Sombrio')">
+                <img src="victor-sanches-final-art.webp" alt="Ritual Sombrio" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Ritual Sombrio</div>
                 </div>
             </div>
 
-            <!-- Item 2: Exemplo de espaço para outra arte/vídeo -->
-            <div class="media-card">
-                <div class="media-wrapper">
-                    <!-- Para colocar uma imagem no lugar do vídeo no futuro, basta usar <img src="URL_DA_IMAGEM" alt="Título"> -->
-                    <video controls>
-                        <source src="https://github.com/user-attachments/assets/f5880915-aeb8-43a1-91a4-64f1a8658a09" type="video/mp4">
-                        Seu navegador não suporta a exibição de vídeos.
-                    </video>
-                </div>
-                <div class="media-info">
-                    <h2 class="media-title">Estudo de Texturas</h2>
-                    <p class="media-description">Exploração visual focada em elementos escuros e estéticas alternativas.</p>
+            <!-- Item 2 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-maha-kali.webp', 'Maha Kali')">
+                <img src="victor-sanches-maha-kali.webp" alt="Maha Kali" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Maha Kali</div>
                 </div>
             </div>
 
+            <!-- Item 3 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-box-finalizado.jpg', 'Shape de Skate Customizado - Dark Dragon')">
+                <img src="victor-sanches-box-finalizado.jpg" alt="Shape de Skate Customizado" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Shape Customizado: Dragão</div>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-tt.webp', 'Cyber-Sigilism & Tattoo Flash')">
+                <img src="victor-sanches-tt.webp" alt="Tattoo Flash Design" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Tattoo Flash / Sigilism</div>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-gemini-generated-image-kkpsijkkpsijkkps.webp', 'Deidade Coroada')">
+                <img src="victor-sanches-gemini-generated-image-kkpsijkkpsijkkps.webp" alt="Deidade Coroada" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Rainha dos Espinhos</div>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-copilot-20260711-201504.webp', 'Vampiric Entity')">
+                <img src="victor-sanches-copilot-20260711-201504.webp" alt="Vampiric Entity" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Criatura da Noite</div>
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="gallery-item" onclick="openModal('victor-sanches-copilot-20260714-194226.webp', 'Túmulo Esquecido')">
+                <img src="victor-sanches-copilot-20260714-194226.webp" alt="Túmulo Esquecido" loading="lazy">
+                <div class="item-info">
+                    <div class="item-title">Epitáfio Sombrio</div>
+                </div>
+            </div>
         </div>
-    </main>
+
+    </div>
+
+    <!-- Modal Lightbox -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <img id="modalImg" src="" alt="Visualização Ampliada">
+    </div>
 
     <footer>
-        <p>&copy; 2026 SHADOWART. TODOS OS DIREITOS RESERVADOS.</p>
+        <p>&copy; 2026 Victor Sanches. Todos os direitos reservados.</p>
+        <p>Shadow Art Portfolio</p>
     </footer>
 
+    <script>
+        function openModal(src, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modal.style.display = "flex";
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+    </script>
 </body>
 </html>
